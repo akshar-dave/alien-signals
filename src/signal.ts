@@ -10,6 +10,7 @@ export class Signal<T = any> implements Dependency {
 	// Dependency
 	subs = undefined;
 	subsTail = undefined;
+	subsCount = 0;
 	subVersion = -1;
 
 	constructor(

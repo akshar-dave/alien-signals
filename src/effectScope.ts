@@ -10,6 +10,7 @@ export class EffectScope implements IEffect, Subscriber {
 	// Subscriber
 	deps = undefined;
 	depsTail = undefined;
+	weakRef = undefined;
 	versionOrDirtyLevel = DirtyLevels.None;
 
 	notify() {

@@ -12,6 +12,8 @@ export class Effect implements IEffect, Dependency, Subscriber {
 	// Dependency
 	subs = undefined;
 	subsTail = undefined;
+	weakRef = undefined;
+	subsCount = 0;
 	subVersion = -1;
 
 	// Subscriber

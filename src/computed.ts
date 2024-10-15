@@ -10,11 +10,13 @@ export class Computed<T = any> implements Dependency, Subscriber {
 	// Dependency
 	subs = undefined;
 	subsTail = undefined;
+	subsCount = 0;
 	subVersion = -1;
 
 	// Subscriber
 	deps = undefined;
 	depsTail = undefined;
+	weakRef = undefined;
 	versionOrDirtyLevel = DirtyLevels.Dirty;
 
 	constructor(
@@ -29,7 +31,7 @@ export class Computed<T = any> implements Dependency, Subscriber {
 			if (this.versionOrDirtyLevel === DirtyLevels.Dirty) {
 				return this.update();
 			}
-		} else if (dirtyLevel >= DirtyLevels.Dirty) {
+		} else if (dirtyLevel === DirtyLevels.Dirty) {
 			return this.update();
 		}
 		return this.cachedValue!;
